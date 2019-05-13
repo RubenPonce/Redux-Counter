@@ -6,8 +6,6 @@ class Counter extends Component {
     incrementIfOdd = (e) => {
         // Stretch Problem: Implement an increment function that
         // only increments if the counter value is odd 
-        e.preventDefault();
-        console.log(this.props.count,"count in increment if odd")  
         if(this.props.count % 2 ===0 )  {
             return null;
         }
@@ -26,7 +24,6 @@ class Counter extends Component {
         // Fill in the two button onClick methods
         // Upon clicking these buttons, the count
         // should decrement or increment accordingly
-      console.log(this.props.count % 2)
         return (
             <p>
                 Clicked: {this.props.count} times
@@ -66,7 +63,6 @@ class Counter extends Component {
 // redux application, though, it would receive only the relevant
 // parts it needs from the state object.
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         count: state.count
     };
