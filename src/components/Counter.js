@@ -3,14 +3,21 @@ import { connect } from 'react-redux';
 import { increment, decrement } from '../actions';
 
 class Counter extends Component {
-    incrementIfOdd = () => {
+    incrementIfOdd = (e) => {
         // Stretch Problem: Implement an increment function that
-        // only increments if the counter value is odd
+        // only increments if the counter value is odd 
+        if(this.props.count % 2 ===0 )  {
+            return null;
+        }
+        else{
+            this.props.increment(this.props.count)
+        }
     };
 
     incrementAsync = () => {
         // Stretch Problem: Implement an increment function that
         // increments after waiting for one second
+        this.props.increment(this.props.count)
     };
 
     render() {
@@ -20,11 +27,21 @@ class Counter extends Component {
         return (
             <p>
                 Clicked: {this.props.count} times
-                <button onClick={() => {/* Fill me in */ }}>
+                <button onClick={() => {this.props.increment(this.props.count) }}>
                     +
                 </button>
-                <button onClick={() => {/* Fill me in */ }}>
+
+               
+
+                <button onClick={() => { this.props.decrement(this.props.count) }}>
                     -
+                </button>
+
+                <button onClick={()=>window.setTimeout(this.incrementAsync,1000)}>
+                    Increment After one second, for some reason
+                </button>
+                <button onClick={this.incrementIfOdd}>
+                    +IfOdd
                 </button>
                  {/* Uncomment these button tags if you got
                 around to implementing the extra credit functions */}
